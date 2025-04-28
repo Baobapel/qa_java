@@ -36,23 +36,24 @@ public class LionTests {
     // Основные тесты
 
     @Mock
-    private Predator PredatorMock;
+    private Feline FelineMock;
 
     @Test
+
     public void testGetKittensDelegatesToKitty() throws Exception {
-        when(PredatorMock.getKittens()).thenReturn(3);
-        Lion lion = new Lion(PredatorMock, "Самец");
+        when(FelineMock.getKittens()).thenReturn(3);
+        Lion lion = new Lion(FelineMock, "Самец");
         assertEquals(3, lion.getKittens());
-        verify(PredatorMock).getKittens();
+        verify(FelineMock).getKittens();
     }
 
     @Test
     public void testGetFoodDelegatesToKitty() throws Exception {
         List<String> expectedFood = List.of("Мясо");
-        when(PredatorMock.getFood()).thenReturn(expectedFood);
-        Lion lion = new Lion(PredatorMock, "Самка");
+        when(FelineMock.getFood()).thenReturn(expectedFood);
+        Lion lion = new Lion(FelineMock, "Самка");
         assertEquals(expectedFood, lion.getFood());
-        verify(PredatorMock).getFood();
+        verify(FelineMock).getFood();
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -77,8 +78,8 @@ public class LionTests {
     // Проверка getFood() бросает исключение, если kitty.getFood() бросает исключение
     @Test(expected = Exception.class)
     public void testGetFoodPropagatesException() throws Exception {
-        when(PredatorMock.getFood()).thenThrow(new Exception("Ошибка в IKitty"));
-        Lion lion = new Lion(PredatorMock, "Самец");
+        when(FelineMock.getFood()).thenThrow(new Exception("Ошибка в IKitty"));
+        Lion lion = new Lion(FelineMock, "Самец");
         lion.getFood();
     }
 

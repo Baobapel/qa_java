@@ -5,17 +5,17 @@ import java.util.List;
 public class Lion {
 
     private boolean hasMane;
-    private Predator kitty;
+    private Feline feline;
 
     public Lion(String sex) throws Exception {
         this(new Feline(), sex);
     }
 
-    public Lion(Predator kitty, String sex) throws Exception {
-        if (kitty == null) {
+    public Lion(Feline feline, String sex) throws Exception {
+        if (feline == null) {
             throw new IllegalArgumentException("Kitty не может быть null");
         }
-        this.kitty = kitty;
+        this.feline = feline;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -26,7 +26,7 @@ public class Lion {
     }
 
     public int getKittens() {
-        return kitty.getKittens();
+        return feline.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -34,6 +34,6 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return kitty.getFood();
+        return feline.getFood();
     }
 }
