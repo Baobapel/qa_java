@@ -5,13 +5,13 @@ import java.util.List;
 public class Lion {
 
     private boolean hasMane;
-    private IKitty kitty;
+    private Predator kitty;
 
     public Lion(String sex) throws Exception {
         this(new Feline(), sex);
     }
 
-    public Lion(IKitty kitty, String sex) throws Exception {
+    public Lion(Predator kitty, String sex) throws Exception {
         if (kitty == null) {
             throw new IllegalArgumentException("Kitty не может быть null");
         }

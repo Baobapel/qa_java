@@ -1,5 +1,5 @@
 import com.example.Feline;
-import com.example.IKitty;
+import com.example.Predator;
 import com.example.Lion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,23 +36,23 @@ public class LionTests {
     // Основные тесты
 
     @Mock
-    private IKitty kittyMock;
+    private Predator PredatorMock;
 
     @Test
     public void testGetKittensDelegatesToKitty() throws Exception {
-        when(kittyMock.getKittens()).thenReturn(3);
-        Lion lion = new Lion(kittyMock, "Самец");
+        when(PredatorMock.getKittens()).thenReturn(3);
+        Lion lion = new Lion(PredatorMock, "Самец");
         assertEquals(3, lion.getKittens());
-        verify(kittyMock).getKittens();
+        verify(PredatorMock).getKittens();
     }
 
     @Test
     public void testGetFoodDelegatesToKitty() throws Exception {
         List<String> expectedFood = List.of("Мясо");
-        when(kittyMock.getFood()).thenReturn(expectedFood);
-        Lion lion = new Lion(kittyMock, "Самка");
+        when(PredatorMock.getFood()).thenReturn(expectedFood);
+        Lion lion = new Lion(PredatorMock, "Самка");
         assertEquals(expectedFood, lion.getFood());
-        verify(kittyMock).getFood();
+        verify(PredatorMock).getFood();
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -67,18 +67,18 @@ public class LionTests {
         assertTrue(lion.doesHaveMane());
     }
 
-    // Проверка, что конструктор создаёт Feline при вызове с одним параметром
+    // Проверка, что конструктор создаёт Lion при вызове с одним параметром
     @Test
     public void testSingleParamConstructorCreatesFeline() throws Exception {
         Lion lion = new Lion("Самка");
-        assertEquals(1, lion.getKittens()); // Feline возвращает 1 по умолчанию
+        assertEquals(1, lion.getKittens()); // Lion возвращает 1 по умолчанию
     }
 
     // Проверка getFood() бросает исключение, если kitty.getFood() бросает исключение
     @Test(expected = Exception.class)
     public void testGetFoodPropagatesException() throws Exception {
-        when(kittyMock.getFood()).thenThrow(new Exception("Ошибка в IKitty"));
-        Lion lion = new Lion(kittyMock, "Самец");
+        when(PredatorMock.getFood()).thenThrow(new Exception("Ошибка в IKitty"));
+        Lion lion = new Lion(PredatorMock, "Самец");
         lion.getFood();
     }
 
