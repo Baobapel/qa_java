@@ -9,7 +9,7 @@ public class Feline extends Animal implements Predator {
         return getFood("Хищник");
     }
 
-    @Override
+
     public List<String> getFood(){
         return List.of("Животные", "Птицы", "Рыба");
     }
@@ -17,11 +17,11 @@ public class Feline extends Animal implements Predator {
     public String getFamily() {
         return "Кошачьи";
     }
-    @Override
+
     public int getKittens() {
         return getKittens(1);
     }
-    @Override
+
     public int getKittens(int kittensCount) {
         return kittensCount;
     }
